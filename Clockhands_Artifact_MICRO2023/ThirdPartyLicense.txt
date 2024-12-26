@@ -1,0 +1,9 @@
+This artifact contains the following third party softwares.
+
+* CoreMark
+* Ray Tracing in One Weekend
+* musl
+* STRAIGHT toolchains
+* Onikiri2
+
+These softwares are licensed under their own license.

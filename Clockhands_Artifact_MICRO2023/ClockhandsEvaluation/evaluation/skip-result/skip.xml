@@ -1,0 +1,8 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Session>
+  <Emulator SimStartPC="0" SimStartPCCount="0" />
+
+  <Simulator>
+    <System Mode="Simulation" SimulationInsns='0' SkipInsns='300G' />
+  </Simulator>
+</Session>

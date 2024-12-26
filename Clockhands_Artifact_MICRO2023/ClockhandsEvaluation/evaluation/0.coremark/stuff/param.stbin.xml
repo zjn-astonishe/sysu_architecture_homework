@@ -1,0 +1,63 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Session>
+
+  <Emulator
+    TargetArchitecture="STRAIGHT64Linux"
+    SimStartPC="0"
+    SimStartPCCount="0"
+    >
+    <Processes>
+      <Process
+        TargetBasePath='../'
+        TargetWorkPath='stuff/'
+        Command='coremark.stbin'
+        CommandArguments=''
+        STDIN=''
+        STDOUT='coremark.stbin.stdout'
+        STDERR='coremark.stbin.stderr'
+      />
+    </Processes>
+  </Emulator>
+
+  <Simulator>
+    <System Mode="Simulation" SimulationInsns='300G' SkipInsns='0' />
+
+    <Configurations>
+      <DefaultConfiguration>
+        <Structure>
+          <Copy Count="ThreadCount">
+            <STRAIGHTSystem Count = "CoreCount" Name = "straightSystem">
+              <Core Name = "core" />
+              <EmulatorIF Name = "emulator" />
+            </STRAIGHTSystem>
+          </Copy>
+        </Structure>
+        <Parameter>
+          <STRAIGHTSystem Name = "straightSystem" />
+          <RegisterFile Name="registerFile" Capacity="5120" />
+          <Renamer Name="renamer" RenameLatency="1" /> <!-- decode + rename latency -->
+          <Dispatcher Name="dispatcher" DispatchLatency="1" />
+          <Retirer Name="retirer" SimFinishPC="0" SimFinishPCCount="0" />
+        </Parameter>
+      </DefaultConfiguration>
+    </Configurations>
+  </Simulator>
+
+  <Environment>
+    <Dumper>
+      <!-- ビジュアライザ 用のダンプ -->
+      <VisualizationDumper
+        FileName='coremark10.stbin.vis.txt'
+        EnableDump='0'
+        EnableGzip='1'
+        GzipLevel ='2'
+        SkipInsns ='0'
+      />
+    </Dumper>
+
+    <OutputXML
+      FileName='coremark.stbin.xml'
+      Level='Detail'
+    />
+  </Environment>
+</Session>

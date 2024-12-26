@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Session>
+  <Simulator>
+    <Configurations>
+      <DefaultConfiguration>
+        <Parameter>
+          <Fetcher Name = "fetcher" FetchWidth = "6" />
+          <InorderList Name = "inorderList" Capacity = "640" />
+          <PipelinedExecUnit Name = "exInt" Port = "8" />
+          <MemOrderManager Name="memOrderManager" Unified="0" LoadCapacity="96" StoreCapacity="72" />
+          <Scheduler Name = "unifiedScheduler" WindowCapacity="192" />
+          <RegisterFile Name="registerFile" Capacity="52,512,122,82" />
+        </Parameter>
+      </DefaultConfiguration>
+    </Configurations>
+  </Simulator>
+</Session>
+

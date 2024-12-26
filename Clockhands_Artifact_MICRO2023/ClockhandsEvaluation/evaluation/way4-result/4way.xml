@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Session>
+  <Simulator>
+    <Configurations>
+      <DefaultConfiguration>
+        <Parameter>
+          <Fetcher Name = "fetcher" FetchWidth = "4" />
+          <InorderList Name = "inorderList" Capacity = "256" />
+          <MemExecUnit Name = "exLoad" Port="2" />
+          <MemExecUnit Name = "exStore" Port="1" />
+          <PipelinedExecUnit Name = "exInt" Port = "4" />
+          <PipelinedExecUnit Name = "exIntMUL" Port = "1" />
+          <PipelinedExecUnit Name = "exFloat" Port = "2" />
+          <MemOrderManager Name="memOrderManager" Unified="0" LoadCapacity="64" StoreCapacity="48" />
+          <Scheduler Name = "unifiedScheduler" WindowCapacity="128" IssueWidth="8" />
+        </Parameter>
+      </DefaultConfiguration>
+    </Configurations>
+  </Simulator>
+</Session>
+

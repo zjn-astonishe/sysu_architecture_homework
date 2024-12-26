@@ -1,0 +1,62 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Session>
+
+  <Emulator
+    TargetArchitecture="Clockhands64Linux"
+    SimStartPC="0"
+    SimStartPCCount="0"
+    >
+    <Processes>
+      <Process
+        TargetBasePath='../'
+        TargetWorkPath='stuff/'
+        Command='coremark.chbin'
+        CommandArguments=''
+        STDIN=''
+        STDOUT='coremark.chbin.stdout'
+        STDERR='coremark.chbin.stderr'
+      />
+    </Processes>
+  </Emulator>
+
+  <Simulator>
+    <System Mode="Simulation" SimulationInsns='300G' SkipInsns='0' />
+
+    <Configurations>
+      <DefaultConfiguration>
+        <Structure>
+          <Copy Count="ThreadCount">
+            <ClockhandsSystem Count = "CoreCount" Name = "clockhandsSystem">
+              <Core Name = "core" />
+            </ClockhandsSystem>
+          </Copy>
+        </Structure>
+        <Parameter>
+          <ClockhandsSystem Name = "clockhandsSystem" />
+          <RegisterFile Name="registerFile" Capacity="4096,4096,4096,4096" />
+          <Renamer Name="renamer" RenameLatency="1" /> <!-- decode + rename latency -->
+          <Dispatcher Name="dispatcher" DispatchLatency="1" />
+          <Retirer Name="retirer" SimFinishPC="0" SimFinishPCCount="0" />
+        </Parameter>
+      </DefaultConfiguration>
+    </Configurations>
+  </Simulator>
+
+  <Environment>
+    <Dumper>
+      <!-- ビジュアライザ 用のダンプ -->
+      <VisualizationDumper
+        FileName='coremark10.chbin.vis.txt'
+        EnableDump='0'
+        EnableGzip='1'
+        GzipLevel ='2'
+        SkipInsns ='0'
+      />
+    </Dumper>
+
+    <OutputXML
+      FileName='coremark.chbin.xml'
+      Level='Detail'
+    />
+  </Environment>
+</Session>

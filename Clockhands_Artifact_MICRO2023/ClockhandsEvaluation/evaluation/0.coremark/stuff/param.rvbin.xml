@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Session>
+
+  <Emulator
+    TargetArchitecture="RISCV64Linux"
+    SimStartPC="0"
+    SimStartPCCount="0"
+    >
+    <Processes>
+      <Process
+        TargetBasePath='../'
+        TargetWorkPath='stuff/'
+        Command='coremark.rvbin'
+        CommandArguments=''
+        STDIN=''
+        STDOUT='coremark.rvbin.stdout'
+        STDERR='coremark.rvbin.stderr'
+      />
+    </Processes>
+  </Emulator>
+
+  <Simulator>
+    <System Mode="Simulation" SimulationInsns='300G' SkipInsns='0' />
+    <Configurations>
+      <DefaultConfiguration>
+        <Parameter>
+          <Renamer Name="renamer" RenameLatency="3" /> <!-- decode + rename latency -->
+          <Dispatcher Name="dispatcher" DispatchLatency="1" />
+          <Retirer Name="retirer" SimFinishPC="0" SimFinishPCCount="0" />
+        </Parameter>
+      </DefaultConfiguration>
+    </Configurations>
+  </Simulator>
+
+  <Environment>
+    <Dumper>
+      <!-- ビジュアライザ 用のダンプ -->
+      <VisualizationDumper
+        FileName='coremark10.rvbin.vis.txt'
+        EnableDump='0'
+        EnableGzip='1'
+        GzipLevel ='2'
+        SkipInsns ='0'
+      />
+    </Dumper>
+    <OutputXML
+      FileName='coremark.rvbin.xml'
+      Level='Detail'
+    />
+  </Environment>
+</Session>
